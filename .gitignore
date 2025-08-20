@@ -1,0 +1,15 @@
+*.selector
+*.xml
+*.workspace
+*.wktree
+*.meta
+*.csproj
+*.sln
+*.log
+/Library
+*.cache
+/Packages
+/ProjectSettings
+/UserSettings
+/Temp
+/obj/Debug

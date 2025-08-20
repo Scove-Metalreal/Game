@@ -1,14 +1,26 @@
+// 8/19/2025 AI-Tag
+// This was created with the help of Assistant, a Unity Artificial Intelligence product.
+
 using System;
 using UnityEditor;
 using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+    private static readonly int AttackTrigger = Animator.StringToHash("isAttacking");
+
     public GameObject bulletPrefab; // The bullet prefab to spawn
     public Transform bulletSpawner; // The position from where the bullet will be spawned
     public float bulletSpeed = 10f; // Speed of the bullet
 
     private bool _isFacingRight = true; // Track the player's facing direction
+    
+    private Animator _animator; // Reference to Animator
+
+    void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -16,6 +28,7 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetButtonDown("Fire1")) // Default "Fire1" is left mouse button
         {
             Shoot();
+            _animator.SetTrigger(AttackTrigger); // Use Trigger for attack
         }
 
         // Update facing direction (optional, if you flip the player elsewhere)
